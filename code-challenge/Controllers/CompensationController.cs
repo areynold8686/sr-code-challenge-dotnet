@@ -36,14 +36,14 @@ namespace challenge.Controllers
         public IActionResult CreateCompensation([FromBody] Compensation compensation)
         {
             try
-            {
+            {              
                 _logger.LogDebug($"Received compensation create request for '{compensation.Employee.EmployeeId}");
 
                 // Should run compensation.Employee.EmployeeId through a santization method
-
+                
                 // Verify the incoming data is good
                 bool isValid = _compensationService.IsDataValid(compensation);
-
+                
                 if (isValid)
                 {
                     _compensationService.Create(compensation);
@@ -75,7 +75,7 @@ namespace challenge.Controllers
 
                 _logger.LogDebug($"Received compensation get request for '{id}'");
 
-                var compensation = _compensationService.GetById(id);
+                var compensation = _compensationService.GetByEmployeeId(id);
 
                 if (compensation == null)
                     return NotFound();

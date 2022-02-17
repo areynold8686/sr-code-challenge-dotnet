@@ -27,7 +27,7 @@ namespace challenge.Services
             {
                 Employee employee = _employeeService.GetById(employeeID);
 
-                if(employee != null)
+                if (employee != null)
                 {
                     int numberOfReports = GetNumberOfReportsByEmployee(employee);
 
@@ -42,7 +42,7 @@ namespace challenge.Services
         {          
             int numberOfReports = 0;
 
-            if (employee.DirectReports.Count > 0)
+            if (employee.DirectReports != null && employee.DirectReports.Count > 0)
             {
                 foreach (Employee directReportEmployee in employee.DirectReports)
                 {

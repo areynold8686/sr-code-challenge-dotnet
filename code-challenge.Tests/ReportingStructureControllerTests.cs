@@ -61,6 +61,27 @@ namespace code_challenge.Tests.Integration
 
             // Assert
             Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
-        }        
+        }
+
+        [TestMethod]
+        public void GetReportingStructure_Returns_ExpectedCount()
+        {
+            // Arrange
+            int expectedCount = 4;
+            var employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86f";
+
+            // Execute
+            var getRequestTask = _httpClient.GetAsync($"api/reportingstructure/{employeeId}");
+            var response = getRequestTask.Result;
+
+            // Assert
+            var reportingStructure = response.DeserializeContent<ReportingStructure>();
+
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            Assert.IsNotNull(reportingStructure.Employee);
+            Assert.AreEqual("John", reportingStructure.Employee.FirstName);
+            //Assert.AreEqual(2, reportingStructure.Employee.DirectReports.Count);
+            Assert.AreEqual(expectedCount, reportingStructure.NumberOfReports);
+        }
     }
 }

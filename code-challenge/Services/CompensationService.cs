@@ -25,18 +25,18 @@ namespace challenge.Services
         {
             if(compensation != null)
             {
-                //_employeeRepository.Add(employee);
-                //_employeeRepository.SaveAsync().Wait();
+                _compensationRepository.Add(compensation);
+                _compensationRepository.SaveAsync().Wait();
             }
 
             return compensation;
         }
 
-        public Compensation GetById(string id)
+        public Compensation GetByEmployeeId(string id)
         {
             if(!String.IsNullOrEmpty(id))
             {
-                //return _employeeRepository.GetById(id);
+                return _compensationRepository.GetByEmployeeId(id);
             }
 
             return null;
@@ -45,11 +45,11 @@ namespace challenge.Services
         public bool IsDataValid(Compensation compensation)
         {
             bool isValid = true;
-
+            
             Employee employee = _employeeService.GetById(compensation.Employee.EmployeeId);
-
+            
             // Might be needed, depending on requirements
-            bool alreadyExists = _compensationRepository.GetByEmployeeId(compensation.Employee.EmployeeId) != null;
+            //bool alreadyExists = _compensationRepository.GetByEmployeeId(compensation.Employee.EmployeeId) != null;
 
             if (employee == null || compensation.Salary <= 0) // || alreadyExists
             {
