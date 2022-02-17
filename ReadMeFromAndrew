@@ -1,0 +1,3 @@
+A handful of my Unit tests are failing. I believe it's all related to the CompensationRepository I added not being properly added to the ServicesCollection.
+
+Also, the DirectReports property of the employee is NULL when calling GetById in the EmployeeService. I expected that to contain the list, so my attempt to get the full number of reports failed, but I'd like to discuss all of this during the review.
