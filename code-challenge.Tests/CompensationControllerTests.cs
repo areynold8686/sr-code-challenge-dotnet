@@ -91,7 +91,7 @@ namespace code_challenge.Tests.Integration
                 EffectiveDate = _utcNow
             };
 
-            var requestContent = new JsonSerialization().ToJson(employee);
+            var requestContent = new JsonSerialization().ToJson(compensation);
 
             // Execute
             var postRequestTask = _httpClient.PostAsync("api/compensation",

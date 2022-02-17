@@ -39,6 +39,11 @@ namespace code_challenge
             services.AddScoped<ICompensationRepository, CompensationRepository>();            
             services.AddScoped<IReportingStructureService, ReportingStructureService>();
 
+            //services.AddDbContext<CompensationContext>(options =>
+            //{
+            //    options.UseInMemoryDatabase("CompensationDB");
+            //});
+
             services.AddMvc();
         }
 
