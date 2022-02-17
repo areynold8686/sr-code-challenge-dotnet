@@ -1,3 +1,5 @@
 A handful of my Unit tests are failing. I believe it's all related to the CompensationRepository I added not being properly added to the ServicesCollection.
 
 Also, the DirectReports property of the employee is NULL when calling GetById in the EmployeeService. I expected that to contain the list, so my attempt to get the full number of reports failed, but I'd like to discuss all of this during the review.
+
+"No database provider has been configured for this DbContext. A provider can be configured by overriding the DbContext.OnConfiguring method or by using AddDbContext on the application service provider. If AddDbContext is used, then also ensure that your DbContext type accepts a DbContextOptions<TContext> object in its constructor and passes it to the base constructor for DbContext."
